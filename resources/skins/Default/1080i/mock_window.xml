@@ -1,0 +1,31 @@
+<window type="dialog">
+    <defaultcontrol always="true">10000</defaultcontrol>
+    
+    <coordinates>
+        <left>0</left>
+        <top>0</top>
+    </coordinates>
+    
+    <controls>
+        <control type="group" i="10000">
+            <control type="list" id="1000">
+                <content target="videos">$INFO[Window().Property(dir_content)]</content>
+                <itemlayout>
+                    <control type="label">
+                        <width>1</width>
+                        <height>1</height>
+                        <label />
+                    </control>
+                </itemlayout>
+                
+                <focusedlayout>
+                    <control type="label">
+                        <width>1</width>
+                        <height>1</height>
+                        <label />
+                    </control>
+                </focusedlayout>
+            </control>
+        </control>
+    </controls>
+</window>
