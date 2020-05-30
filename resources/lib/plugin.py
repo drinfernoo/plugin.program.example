@@ -114,6 +114,7 @@ def test_mock_window():
         def onInit(self):
             xbmcgui.WindowXMLDialog.onInit(self)
             self.load_content(self.content)
+            self.close()
 
         def load_content(self, path):
             num = xbmc.getInfoLabel('Container(1000).NumItems')
@@ -136,11 +137,13 @@ def test_mock_window():
                     xbmcgui.ListItem('my_property = {}'.format(value)), False)
 
             self.clearProperty('dir_content')
-            self.close()
 
     test = MockWindow('mock_window.xml', ADDON_PATH, 'Default', content=content)
-    test.doModal()
-
+    test.show()
+    
+    while test.getProperty('dir_content'):
+        xbmc.Monitor().waitForAbort(0.1)
+    
     del test
     xbmcplugin.endOfDirectory(plugin.handle)
 
